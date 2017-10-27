@@ -1,4 +1,4 @@
-{
+const names = {
     "firstNames": [
         "Amblebatch",
         "Ambleblack",
