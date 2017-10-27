@@ -1,17 +1,14 @@
-// Add your own words to the wordlist. Be carefull to obey the showed syntax
-const data = JSON.parse(`{
-    "firstNames": [
-        "Battlefield", "Bent", "Burnt", "Bubblegum","Bleached","Baffled","Beatle Juice","Beaten Dick","Beany","Bloody"
-    ],
+const namesURL = 'https://raw.githubusercontent.com/LeeConnelly12/BenedictCumberbatchNameGenerator/master/names.json'
+let names;
 
-    "lastNames": [
-        "Call of duty", "Cucumber", "Copper plate", "Cut throat", "Corn on a cob","Curry stain","Large snatch","Iron latch","Fresh batch","Match"
-    ]
-}`);
+$.getJSON(namesURL).then((data) => {
+	names = data
+});
 
 $('#generateButton').on('click', () => {
-    const randomFirstName = parseInt(Math.random() * data.firstNames.length);
-    const randomLastName = parseInt(Math.random() * data.lastNames.length);
-    const name = data.firstNames[randomFirstName]+' '+data.lastNames[randomLastName];
+    const randomFirstName = parseInt(Math.random() * names.firstNames.length);
+    const randomLastName = parseInt(Math.random() * names.lastNames.length);
+    const name = names.firstNames[randomFirstName] + ' ' + names.lastNames[randomLastName];
     $('#result').text(name);
 });
+
